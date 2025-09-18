@@ -1,0 +1,27 @@
+name: JS Action Demo
+
+on:
+  push:
+    branches: [main, develop]
+  workflow_dispatch:
+
+jobs:
+  demo:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run JS Lite (default)
+        id: a1
+        uses: ./.github/actions/js-lite
+
+      - name: Run JS Lite (custom name)
+        id: a2
+        uses: ./.github/actions/js-lite
+        with:
+          name: "GHLabs101"
+
+      - name: Summarize outputs
+        run: |
+          echo "Default message : ${{ steps.a1.outputs.message }}"
+          echo "Custom message  : ${{ steps.a2.outputs.message }}"
