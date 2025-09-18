@@ -1,0 +1,13 @@
+name: "JS Lite"
+description: "Greets a name and emits an output message"
+inputs:
+  name:
+    description: "Name to greet"
+    required: false
+    default: "world"
+outputs:
+  message:
+    description: "The greeting that was printed"
+runs:
+  using: node20
+  main: dist/index.js
